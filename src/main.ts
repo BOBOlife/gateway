@@ -1,3 +1,4 @@
+import { TransformInterceptor } from './common/interceptors/transform.interceptor'
 import { VersioningType, VERSION_NEUTRAL } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import {  FastifyAdapter, NestFastifyApplication  } from '@nestjs/platform-fastify'
@@ -11,6 +12,8 @@ async function bootstrap() {
     defaultVersion: [VERSION_NEUTRAL, '1', '2'],
     type: VersioningType.URI
   })
+
+  app.useGlobalInterceptors(new TransformInterceptor())
 
 
   await app.listen(8888);
