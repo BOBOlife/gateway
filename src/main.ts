@@ -8,6 +8,7 @@ import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/exceptions/base.exception.filter';
 import { HttpExceptionFilter } from './common/exceptions/http.exception.filter';
 import { TransformInterceptor } from './common/interceptors/transform.interceptor';
+import { generateDocument } from './doc';
 
 declare const module: any;
 
@@ -16,10 +17,6 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   );
-  if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => app.close());
-  }
   //统一的响应体格式
   app.useGlobalInterceptors(new TransformInterceptor());
 
@@ -31,6 +28,14 @@ async function bootstrap() {
     defaultVersion: [VERSION_NEUTRAL, '1', '2'],
     type: VersioningType.URI,
   });
+
+  // 创建文档
+  generateDocument(app);
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 
   await app.listen(3000);
 }
