@@ -1,5 +1,5 @@
 import axios, { Method } from 'axios';
-import { getConfig } from './index';
+import { getConfig } from '@/utils';
 
 const { FEISHU_CONFIG: { FEISHU_URL }} = getConfig()
 
@@ -34,7 +34,7 @@ export interface IRequest {
  * @description 带version的通用 API 请求
  * 
 */
-const methodV = async ({ url, method, headers, params = {}, query = {} }: IMethodV): Promise<IRequest> => {
+export const methodV = async ({ url, method, headers, params = {}, query = {} }: IMethodV): Promise<IRequest> => {
   let sendUrl = ''
   if (/^(http:\/\/|https:\/\/)/.test(url)) {
     sendUrl = url
