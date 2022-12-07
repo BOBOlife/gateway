@@ -19,7 +19,6 @@ export class HttpExceptionFilter implements ExceptionFilter {
     // 处理业务异常
     // TODO 没有走这个业务异常 ？？？
     if (exception instanceof BusinessException) {
-      console.log('sdsds');
       const error = exception.getResponse();
       response.status(HttpStatus.OK).send({
         data: null,

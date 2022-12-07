@@ -45,7 +45,6 @@ export class UserController {
   @Version([VERSION_NEUTRAL, '1'])
   findError() {
     const a: any = {};
-    console.log(a.b.c);
     return this.userService.findAll();
   }
 
@@ -54,7 +53,6 @@ export class UserController {
   findBusinessError() {
     const a: any = {};
     try {
-      console.log(a.b.c);
     } catch (error) {
       throw new BusinessException('你的参数错误');
     }
