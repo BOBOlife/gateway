@@ -6,9 +6,9 @@ import { FeishuService } from './feishu/feishu.service'
 
 @Module({
   // imports: [CacheModule.register()],
-  controllers: [UserController],
-  // controllers: [FeishuController],
-  // providers: [FeishuService]
-  providers: [UserService]
+  // controllers: [UserController],
+  controllers: [FeishuController],
+  providers: [FeishuService],
+  // providers: [UserService]
 })
 export class UserModule {}

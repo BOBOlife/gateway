@@ -1,8 +1,7 @@
 import axios, { Method } from 'axios';
 import { getConfig } from '@/utils';
 
-const { FEISHU_CONFIG: { FEISHU_URL }} = getConfig()
-
+const { FEISHU_CONFIG: { FEISHU_URL } }  = getConfig()
 /**
  * @description: 任意请求
 */
