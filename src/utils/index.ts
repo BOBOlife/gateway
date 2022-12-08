@@ -1,4 +1,3 @@
-import console from 'console';
 import { parse } from 'yaml';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
@@ -7,7 +6,6 @@ const fs = require('fs');
 
 // 获取项目运行环境
 export const getEnv = () => {
-  // console.log(process.env.RUNNING_ENV);
   return process.env.RUNNING_ENV;
 };
 
@@ -17,6 +15,6 @@ export const getConfig = () => {
   const yamlPath = path.join(process.cwd(), `./.config/.${environment}.yaml`);
   const file = fs.readFileSync(yamlPath, 'utf-8');
   const config = parse(file);
-  // console.log(JSON.stringify(config));
+  console.log(JSON.stringify(config));
   return config;
 };
