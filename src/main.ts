@@ -30,7 +30,7 @@ async function bootstrap() {
   });
   
   // // 启动全局字段校验  保证请求接口字段校验正确
-  // app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe());
 
   // 创建文档
   generateDocument(app);
