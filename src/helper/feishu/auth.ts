@@ -6,7 +6,7 @@ export type GetAppTokenRes = {
   msg: string;
   app_access_token: string;
   expire: number;
-}
+};
 
 export const getAppToken = async () => {
   const { data } = await methodV({
@@ -14,12 +14,12 @@ export const getAppToken = async () => {
     method: 'POST',
     params: {
       app_id: APP_ID,
-      app_secret: APP_SECRET
-    }
-  })
+      app_secret: APP_SECRET,
+    },
+  });
 
-  return data as GetAppTokenRes
-}
+  return data as GetAppTokenRes;
+};
 
 export const refreshUserToken = async ({ refreshToken, app_token }) => {
   const { data } = await methodV({

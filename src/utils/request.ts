@@ -1,20 +1,22 @@
 import axios, { Method } from 'axios';
 import { getConfig } from '@/utils';
 
-const { FEISHU_CONFIG: { FEISHU_URL } }  = getConfig()
+const {
+  FEISHU_CONFIG: { FEISHU_URL },
+} = getConfig();
 /**
  * @description: 任意请求
-*/
-const request = async ({ url, option = {}}) => {
+ */
+const request = async ({ url, option = {} }) => {
   try {
     return axios.request({
       url,
       ...option,
-    })
+    });
   } catch (error) {
     throw error;
   }
-}
+};
 
 interface IMethodV {
   url: string;
@@ -31,12 +33,18 @@ export interface IRequest {
 
 /**
  * @description 带version的通用 API 请求
- * 
-*/
-export const methodV = async ({ url, method, headers, params = {}, query = {} }: IMethodV): Promise<IRequest> => {
-  let sendUrl = ''
+ *
+ */
+export const methodV = async ({
+  url,
+  method,
+  headers,
+  params = {},
+  query = {},
+}: IMethodV): Promise<IRequest> => {
+  let sendUrl = '';
   if (/^(http:\/\/|https:\/\/)/.test(url)) {
-    sendUrl = url
+    sendUrl = url;
   } else {
     sendUrl = `${FEISHU_URL}${url}`;
   }
@@ -62,6 +70,6 @@ export const methodV = async ({ url, method, headers, params = {}, query = {} }:
         });
     });
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};

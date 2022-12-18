@@ -7,7 +7,7 @@ import { getConfig } from '@/utils';
 
 @Module({
   imports: [
-    CacheModule.register({isGlobal: true}),
+    CacheModule.register({ isGlobal: true }),
     ConfigModule.forRoot({
       ignoreEnvFile: true,
       isGlobal: true,
